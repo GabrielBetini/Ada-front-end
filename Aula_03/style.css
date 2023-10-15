@@ -1,0 +1,22 @@
+ul {
+	list-style-type: none;
+}
+
+li {
+	display: flex;
+	gap: 5px;
+	margin-bottom: 10px;
+}
+
+.maxw {
+	width: 70%;
+}
+
+form {
+	margin: 0 auto;
+	width: 500px;
+}
+
+#bt {
+	align-items: center;
+}
