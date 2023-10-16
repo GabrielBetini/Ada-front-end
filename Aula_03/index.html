@@ -7,26 +7,136 @@
 		<title>Form</title>
 	</head>
 	<body>
-		<form action="https://crudcrud.com/api/5aefb5651ec94badbb0fab7baaa705e6" method="post">
+		<form id="formulario">
 			<fieldset>
-				<legend>Formulario Exemplo</legend>
+				<legend><h2>Cadastro</h2></legend>
 				<ul>
 					<li>
-						<label for="nome">Nome:</label>
-						<input class="maxw" type="text" id="nome" name="Nome" />
+						<label for="nome">Nome Completo:</label>
+						<input
+							class="w50"
+							type="text"
+							id="nome"
+							name="Nome"
+							required
+							placeholder="Ex. José Silva"
+						/>
 					</li>
 					<li>
-						<label for="idade">Idade:</label>
-						<input class="maxw" type="number" id="idade" name="Idade" />
+						<label for="nascimento">Data de Nascimento:</label>
+						<input class="w50" type="date" id="nascimento" name="Nascimento" required />
 					</li>
 					<li>
 						<label for="email">E-mail:</label>
-						<input class="maxw" type="email" name="email" id="email" />
+						<input
+							class="w50"
+							type="email"
+							name="email"
+							id="email"
+							required
+							placeholder="nome@dominio.com"
+						/>
+					</li>
+					<li>
+						<fieldset class="w50">
+							<legend>Sexo</legend>
+							<label for="feminino">Feminino</label>
+							<input type="radio" name="genero" id="feminino" value="F" required />
+							<label for="masculino">Masculino</label>
+							<input type="radio" name="genero" id="masculino" value="M" required />
+						</fieldset>
 					</li>
 
-					<input type="submit" />
+					<div class="btn_container">
+						<input class="btn" type="button" onclick="postJSON()" value="Enviar" />
+						<input class="btn redefinir" type="reset" />
+					</div>
 				</ul>
 			</fieldset>
 		</form>
+
+		<div id="listaContainer">
+			<fieldset id="fieldLista">
+				<legend>Lista de Cadastro</legend>
+				<table id="lista">
+					<thead>
+						<tr>
+							<th>Nome</th>
+							<th>Nascimento</th>
+							<th>E-mail</th>
+							<th>Gênero</th>
+						</tr>
+					</thead>
+					<tbody id="container"></tbody>
+				</table>
+			</fieldset>
+		</div>
+
+		<script>
+			async function postJSON() {
+				const form = document.querySelector('form');
+				if (!form.reportValidity()) {
+					return;
+				}
+				const formData = new FormData(form);
+				const nomeCompleto = formData.get('Nome');
+				const nascimento = document.getElementById('nascimento').value;
+				const email = formData.get('email');
+				const sexo = formData.get('genero');
+				try {
+					const response = fetch(
+						'https://crudcrud.com/api/5d6cb712ae1e4b09b48a75d221edb7f0/cadastro',
+						{
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify({
+								nomeCompleto: nomeCompleto,
+								nascimento: nascimento,
+								email: email,
+								sexo: sexo,
+							}),
+						}
+					).then(result => {
+						console.log('Success:', result);
+						form.reset();
+						alert('Cadastro realizado!');
+					});
+				} catch (error) {
+					console.error('Error:', error);
+				}
+			}
+
+			// function getTeste() {
+			// 	// const cadastros =
+			// 	// 	'[{"_id":"652c50be2e0fb203e853f108","nomeCompleto":"asdasda","nascimento":"0212-03-14","email":"asdasd@asdasd","sexo":"M"},{"_id":"652c51492e0fb203e853f109","nomeCompleto":"Gabrierl BetiionNNNNNNNN","nascimento":"2011-01-14","email":"contato@conytto.com","sexo":"M"}]';
+
+			// 	try {
+			// 		const response = fetch(
+			// 			'https://crudcrud.com/api/5d6cb712ae1e4b09b48a75d221edb7f0/cadastro',
+			// 			{
+			// 				method: 'GET',
+			// 				headers: {
+			// 					'Content-Type': 'application/json',
+			// 				},
+			// 			}
+			// 		).then(response => {
+			// 			return response.json;
+			// 		});
+			// 	} catch (error) {
+			// 		console.error('Error:', error);
+			// 	}
+			// }
+			// const list = getTeste();
+			// const tableContainer = document.getElementById('container');
+			// list.forEach(elemento => {
+			// 	const row = tableContainer.insertRow();
+			// 	row.insertCell(0).innerHTML = elemento.nomeCompleto;
+			// 	row.insertCell(1).innerHTML = elemento.nascimento;
+			// 	row.insertCell(2).innerHTML = elemento.email;
+			// 	row.insertCell(3).innerHTML = elemento.sexo;
+			// });
+		</script>
 	</body>
 </html>

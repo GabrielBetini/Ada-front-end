@@ -1,22 +1,112 @@
-ul {
-	list-style-type: none;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200&display=swap');
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
 }
 
-li {
-	display: flex;
-	gap: 5px;
-	margin-bottom: 10px;
+body {
+	background-color: rgb(32, 30, 30);
 }
 
-.maxw {
-	width: 70%;
-}
-
-form {
+#formulario {
+	color: white;
+	align-items: center;
+	text-align: center;
 	margin: 0 auto;
 	width: 500px;
 }
 
-#bt {
+fieldset {
+	border-radius: 5px;
+}
+
+legend {
+	color: yellow;
+}
+
+ul {
+	list-style: none;
+}
+
+li {
+	display: flex;
+	flex-direction: column;
 	align-items: center;
+}
+
+.w50 {
+	width: 50%;
+}
+
+label {
+	margin-top: 10px;
+}
+
+input:focus {
+	outline: none;
+}
+
+.btn_container {
+	display: flex;
+	justify-content: center;
+	gap: 24px;
+	padding: 20px;
+}
+
+.btn {
+	font-weight: 600;
+	cursor: pointer;
+	color: white;
+	padding: 5px;
+	background: transparent;
+	border: 1px solid yellow;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	background-color: yellow;
+	color: black;
+}
+
+.btn:active {
+	transform: translateY(-2px);
+}
+
+.redefinir:hover {
+	background-color: red;
+}
+
+#listaContainer {
+	margin-top: 20px;
+	margin: 0 auto;
+	display: flex;
+	max-width: 1250px;
+}
+
+#fieldLista {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	text-align: center;
+}
+
+#lista {
+	padding: 24px;
+}
+
+table {
+	color: white;
+}
+
+th {
+	color: black;
+	background-color: rgb(255, 255, 63);
+	padding: 16px;
+	border: 1px solid;
+}
+
+td {
+	padding: 5px;
+	border: 1px solid rgba(183, 248, 167, 0.753);
 }
