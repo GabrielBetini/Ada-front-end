@@ -1,11 +1,12 @@
-/* 
-    Exercício 2: Média dos elementos de um vetor
+const number = 2;
+const isNumberEven = EvenOrOdd(5);
 
-Dado um vetor `notas` com 4 elementos, calcule a média aritmética de todos os valores e armazene o resultado na variável `media`. Utilize o índice para acessar os valores do vetor e realizar os cálculos.
-*/
+console.log(`Is ${number} an even number: ${isNumberEven}`);
 
-const notas = [17, 28, 39, 96, 55];
-
-let media = (notas[0] + notas[1] + notas[2] + notas[3] + notas[4]) / notas.length;
-
-console.log(media);
+function EvenOrOdd(number) {
+	if (number % 2 == 0) {
+		return true;
+	} else {
+		return false;
+	}
+}
